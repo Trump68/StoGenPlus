@@ -1,5 +1,4 @@
-﻿using StoGen.Classes.Interfaces;
-using StoGen.ModelClasses;
+﻿using StoGen.ModelClasses;
 using System;
 using System.Windows;
 using System.Windows.Controls;
@@ -9,7 +8,6 @@ using StoGenMake.Scenes.Base;
 using System.Windows.Media.Effects;
 using System.IO;
 using System.Collections.Generic;
-using Menu.Classes;
 
 namespace StoGenWPF
 {
@@ -20,7 +18,7 @@ namespace StoGenWPF
     {
 
         
-        public IMenuCreator GlobalMenuCreator = null;
+        //public IMenuCreator GlobalMenuCreator = null;
         MediaElement ClipElement;
         
 
@@ -170,15 +168,15 @@ namespace StoGenWPF
            
             else if (e.Key == Key.Space)
             {
-                SGManager.ChangeVisibleChoiceMenu(MenuType.Cell); // move
+                //SGManager.ChangeVisibleChoiceMenu(MenuType.Cell); // move
             }
             else if (e.Key == Key.F3)
             {
-                SGManager.ChangeVisibleChoiceMenu(MenuType.Common); // full
+                //SGManager.ChangeVisibleChoiceMenu(MenuType.Common); // full
             }
             else if (e.Key == Key.Enter)
             {
-                SGManager.ApplayVisibleChoiceMenu(); 
+               // SGManager.ApplayVisibleChoiceMenu(); 
             }
             else if (e.Key == Key.Escape)
             {

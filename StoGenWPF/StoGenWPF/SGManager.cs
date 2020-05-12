@@ -1,15 +1,6 @@
-﻿using Microsoft.CSharp;
-using StoGen.Classes;
-using StoGen.ModelClasses;
-using System;
-using System.CodeDom.Compiler;
-using System.Collections.Generic;
-using System.Reflection;
-using System.Windows.Forms;
+﻿using StoGen.Classes;
 using System.Windows.Input;
-using StoGen.Classes.Interfaces;
 using StoGenMake.Scenes.Base;
-using Menu.Classes;
 
 namespace StoGenWPF
 {
@@ -78,14 +69,14 @@ namespace StoGenWPF
             //}
             //if (CurrProc != null) CurrProc.ProcessKey(keys);
         }
-        internal static void ChangeVisibleChoiceMenu(MenuType type)
-        {
-            if (CurrProc != null) CurrProc.ShowContextMenu(true, type);
-        }
-        internal static void ApplayVisibleChoiceMenu()
-        {
-            if (CurrProc != null) CurrProc.ApplyContextMenu();
-        }
+        //internal static void ChangeVisibleChoiceMenu(MenuType type)
+        //{
+        //    if (CurrProc != null) CurrProc.ShowContextMenu(true, type);
+        //}
+        //internal static void ApplayVisibleChoiceMenu()
+        //{
+        //    if (CurrProc != null) CurrProc.ApplyContextMenu();
+        //}
 
        
         #endregion

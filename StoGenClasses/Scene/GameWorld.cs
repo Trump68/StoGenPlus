@@ -1,14 +1,6 @@
-﻿using StoGen.Classes;
-using StoGen.Classes.Interfaces;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using StoGenMake.Scenes.Base;
 using StoGenMake.Elements;
-using StoGenMake.Scenes;
-using StoGen.Classes.Data;
-using StoGen.Classes.Data.Games;
-using StoGen.Classes.Data.Movie;
-using System;
-using Menu.Classes;
 
 namespace StoGenMake
 {
@@ -34,7 +26,7 @@ namespace StoGenMake
         //    return scene;
         //}
     }
-    public class GameWorld : IMenuCreator
+    public class GameWorld 
     {
         // !!! new engine
         public static List<ImageAlignVec> ImageStorage = new List<ImageAlignVec>();
@@ -50,30 +42,7 @@ namespace StoGenMake
             this.SceneList = new List<BaseScene>();
         }
 
-        #region Menu
-        public bool CreateMenu(CadreController proc, bool doShowMenu, List<ChoiceMenuItem> itemlist, MenuType type)
-        {
-            if (itemlist == null)
-                itemlist = new List<ChoiceMenuItem>();
-            //proc.OldMenuCreator = this.CreateMenu;
-            ChoiceMenuItem item = null;
-
-
-
-            // Меню scenes
-            item = new ChoiceMenuItem("Scenes ...", this);
-            item.Executor = data =>
-            {
-                //proc.MenuCreator = CreateMenuScenes;
-                proc.ShowContextMenu(true, type);
-            };
-            itemlist.Add(item);
-
-            ChoiceMenuItem.FinalizeShowMenu(proc, doShowMenu, itemlist, false,"Global menu");
-            return true;
-        }
-       
-        #endregion
+  
 
        }
     public class AlignData

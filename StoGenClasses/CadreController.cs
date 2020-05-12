@@ -1,16 +1,10 @@
-﻿using StoGen.ModelClasses;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Media;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using System.Windows.Input;
 using StoGenMake.Scenes.Base;
 using StoGenMake.Elements;
 using StoGenMake;
-using Menu.Classes;
 
 namespace StoGen.Classes
 {
@@ -177,23 +171,23 @@ namespace StoGen.Classes
         // Menu
 
         //public bool ShowContextMenuOnInit = true;
-        public virtual bool ShowContextMenu(bool show, MenuType type)
-        {
-            bool LiveMenu = (CadreId == Cadres.Count()-1);
-            var MenuCreator = this.Scene.GetMenuCreator(LiveMenu);
-            if (MenuCreator != null)
-            {
-                return MenuCreator(this, show, null, type, true);
-            }
-            return false;
-        }
-        public void ApplyContextMenu()
-        {
-            if (this.CurrentCadre == null)
-            {
-                this.GetNextCadre();
-            }
-        }
+        //public virtual bool ShowContextMenu(bool show, MenuType type)
+        //{
+        //    bool LiveMenu = (CadreId == Cadres.Count()-1);
+        //    var MenuCreator = this.Scene.GetMenuCreator(LiveMenu);
+        //    if (MenuCreator != null)
+        //    {
+        //        return MenuCreator(this, show, null, type, true);
+        //    }
+        //    return false;
+        //}
+        //public void ApplyContextMenu()
+        //{
+        //    if (this.CurrentCadre == null)
+        //    {
+        //        this.GetNextCadre();
+        //    }
+        //}
 
         // Magic here (TO DO: recode this)
         public CadreInfo MakeCadre(CadreData item)

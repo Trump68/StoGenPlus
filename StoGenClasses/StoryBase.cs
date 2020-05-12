@@ -1,13 +1,7 @@
-﻿using Menu.Classes;
-using StoGen.Classes;
+﻿using StoGen.Classes;
 using StoGen.Classes.Scene;
-using StoGen.Classes.Transition;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace StoGenerator
 {
@@ -213,84 +207,12 @@ PackStory = 1; PackImage = 1; PackSound = 1; PackVideo = 0";
         }
         protected virtual void GenerateNewStoryStep(CadreController proc)
         {
-            var MenuCreator = GetMenuCreator(true);
-            if (MenuCreator != null)
-            {
-                MenuCreator(proc, true, null, MenuType.Cell, false); // change last argument to default
-            }
+            //var MenuCreator = GetMenuCreator(true);
+            //if (MenuCreator != null)
+            //{
+            //    MenuCreator(proc, true, null, MenuType.Cell, false); // change last argument to default
+            //}
         }
-
-        // MENU
-        protected bool MenuIsLive = false;
-        public MenuCreatorDelegate GetMenuCreator(bool live)
-        {
-            MenuIsLive = live;
-            return CreateMenu;
-        }
-        public virtual bool CreateMenu(CadreController proc, bool doShowMenu, List<ChoiceMenuItem> itemlist, MenuType type, bool goNextCadre)
-        {
-            string caption;
-            // just for root menu
-            itemlist = AddRootMenu(proc, null, goNextCadre, out caption);
-            ChoiceMenuItem.FinalizeShowMenu(proc, doShowMenu, itemlist, true, caption);
-            return true;
-        }
-        protected virtual List<ChoiceMenuItem> AddRootMenu(CadreController proc, List<ChoiceMenuItem> itemlist,bool goNextCadre, out string caption)
-        {
-            if (itemlist == null) itemlist = new List<ChoiceMenuItem>();
-
-            ChoiceMenuItem item = new ChoiceMenuItem();
-            item.Name = "Go To Cadre:";
-            item.itemData = "Go To Cadre:";
-            item.Executor = data =>
-            {
-                //proc.MenuCreator = proc.OldMenuCreator;
-                string str1;
-                var itemlist1 = CreateMenuCadreTravel(proc, null, out str1);
-                ShowMenuGoToCadre(proc, itemlist1);
-            };
-            itemlist.Add(item);
-            caption = "Actions:";
-            return itemlist;
-        }
-        protected List<ChoiceMenuItem> CreateMenuCadreTravel(CadreController proc, List<ChoiceMenuItem> itemlist, out string caption)
-        {
-            if (itemlist == null) itemlist = new List<ChoiceMenuItem>();
-            ChoiceMenuItem item = null;
-            var grupedlist = SceneInfos.Where(x => x.Active && x.Kind == 1).GroupBy(x => x.Group).ToList();
-            foreach (var it in grupedlist)
-            {
-                item = new ChoiceMenuItem();
-                item.Name = it.First().Story;
-                item.itemData = it;
-                MenuDescriptopnItem mdi1 = new MenuDescriptopnItem(" ", it.First().Description, true);                
-                item.Props = (new List<MenuDescriptopnItem>() { mdi1 }).ToArray();
-                item.Executor = data =>
-                {
-                   // proc.MenuCreator = proc.OldMenuCreator;
-                    var index = grupedlist.IndexOf(it);
-                    proc.GoToCadre(++index);
-
-                };
-                itemlist.Add(item);
-            }
-            caption = "Go To Cadre:";
-            return itemlist;
-        }       
-        public bool ShowMenuGoToCadre(CadreController proc, List<ChoiceMenuItem> itemlist)
-        {
-            string caption;
-            // just for current cadre selecting
-            itemlist = CreateMenuCadreTravel(proc, null, out caption);
-            ChoiceMenuItem.FinalizeShowMenu(proc, true, itemlist, true, caption);
-            return true;
-        }
-        public bool ShowSubmenu(CadreController proc, List<ChoiceMenuItem> itemlist, string caption)
-        {
-            ChoiceMenuItem.FinalizeShowMenu(proc, true, itemlist, true, caption);
-            return true;
-        }
-
 
 
 

@@ -4,12 +4,8 @@ using System.Linq;
 using StoGenMake.Elements;
 using System.IO;
 using StoGen.Classes;
-using StoGen.Classes.Transition;
 using StoGen.Classes.Scene;
 using StoGen.Classes.Scenario;
-using StoGen.Classes.Interfaces;
-using System.Windows.Forms;
-using Menu.Classes;
 
 namespace StoGenMake.Scenes.Base
 {
@@ -146,7 +142,7 @@ namespace StoGenMake.Scenes.Base
         
 
         public IStoryGenerator StoryGenerator = new StoryGeneratorDefault();
-        static IMenuCreator GlobalMenuCreator = null;
+        //static IMenuCreator GlobalMenuCreator = null;
         public Guid GID { set; get; }
 
        
@@ -205,10 +201,7 @@ namespace StoGenMake.Scenes.Base
 
       
 
-        public virtual MenuCreatorDelegate GetMenuCreator(bool live)
-        {
-            return null;
-        }
+      
        
         #endregion
 

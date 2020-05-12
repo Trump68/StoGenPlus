@@ -1,13 +1,9 @@
 ﻿
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
-using System.Web;
 using System.IO;
 using System.Windows.Forms;
-using DevExpress.XtraEditors;
 
 namespace StoGen.Classes
 {
@@ -47,7 +43,7 @@ namespace StoGen.Classes
         public static WeekDay CurrentWeekDay { set; get; }
         public static void Alarm(string mess)
         {
-            XtraMessageBox.Show(mess, "Alarm!", System.Windows.Forms.MessageBoxButtons.OK,MessageBoxIcon.Warning);
+            //XtraMessageBox.Show(mess, "Alarm!", System.Windows.Forms.MessageBoxButtons.OK,MessageBoxIcon.Warning);
         }
         public static string GetFullPath(string fn, string defaultpath)
         {

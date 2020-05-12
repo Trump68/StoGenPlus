@@ -1,15 +1,10 @@
-﻿using Menu.Classes;
-using StoGen.Classes.Scene;
-using StoGen.Classes.Transition;
+﻿using StoGen.Classes.Transition;
 using StoGenerator;
 using StoGenMake.Scenes.Base;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace StoGen.Classes.Data.Games
 {
@@ -407,10 +402,6 @@ namespace StoGen.Classes.Data.Games
         }
 
 
-        public override MenuCreatorDelegate GetMenuCreator(bool live)
-        {
-            return this.Story.GetMenuCreator(live);
-        }
-
+    
     }
 }

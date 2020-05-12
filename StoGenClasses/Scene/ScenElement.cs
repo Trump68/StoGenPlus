@@ -1,10 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using StoGenMake.Scenes.Base;
 using StoGen.Classes;
 using System.Drawing;
-using DevExpress.XtraEditors.Controls;
+using StoGen.Classes.Frames;
 
 namespace StoGenMake.Elements
 {

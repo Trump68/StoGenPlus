@@ -1,5 +1,4 @@
-﻿using DevExpress.XtraEditors;
-using DevExpress.XtraEditors.Controls;
+﻿using StoGen.Classes.Frames;
 using StoGen.Classes.Transition;
 using StoGen.ModelClasses;
 using System;
@@ -14,8 +13,6 @@ using System.Windows.Input;
 using System.Windows.Interop;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Threading;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace StoGen.Classes
 {
@@ -316,7 +313,7 @@ namespace StoGen.Classes
 
                 if (!Pics[i].Props.FileName.EndsWith("CANVAS") && !File.Exists(Pics[i].Props.FileName))
                 {
-                    XtraMessageBox.Show(Pics[i].Props.FileName, "File not exists", System.Windows.Forms.MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    //XtraMessageBox.Show(Pics[i].Props.FileName, "File not exists", System.Windows.Forms.MessageBoxButtons.OK, MessageBoxIcon.Error);
                     continue;
                 }
                 string ext = Path.GetExtension(Pics[i].Props.FileName);

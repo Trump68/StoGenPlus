@@ -74,7 +74,7 @@ namespace StoGenMake
 
             StoGenWPF.MainWindow window = new StoGenWPF.MainWindow();
             Projector.ProjectorWindow = window;
-            window.GlobalMenuCreator = GameWorldFactory.GameWorld;
+            //window.GlobalMenuCreator = GameWorldFactory.GameWorld;
             window.Scene = scene;
             window.Show();
             window.IsVisibleChanged += Window_IsVisibleChanged;

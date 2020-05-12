@@ -30,19 +30,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="DevExpress.Data.v17.1, Version=17.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.Office.v17.1.Core, Version=17.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.Pdf.v17.1.Core, Version=17.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-    <Reference Include="DevExpress.Printing.v17.1.Core, Version=17.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-    <Reference Include="DevExpress.RichEdit.v17.1.Core, Version=17.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.Sparkline.v17.1.Core, Version=17.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-    <Reference Include="DevExpress.Utils.v17.1, Version=17.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.XtraEditors.v17.1, Version=17.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-    <Reference Include="DevExpress.XtraGrid.v17.1, Version=17.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.XtraLayout.v17.1, Version=17.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.XtraPrinting.v17.1, Version=17.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.XtraRichEdit.v17.1, Version=17.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.XtraVerticalGrid.v17.1, Version=17.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\StoGenWPF\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
@@ -74,9 +61,9 @@
     <Compile Include="CadreData.cs" />
     <Compile Include="Catalog\EpItem.cs" />
     <Compile Include="Cell.cs" />
+    <Compile Include="Frames\ImageUtils.cs" />
     <Compile Include="Interfaces\IPersonManager.cs" />
     <Compile Include="LocationStorage.cs" />
-    <Compile Include="Menu\MenuClasses.cs" />
     <Compile Include="Person\Activity.cs" />
     <Compile Include="Person\Person.cs" />
     <Compile Include="Scenario\IStoryGenerator.cs" />
@@ -84,24 +71,6 @@
     <Compile Include="SceneCadres\CE_Location.cs" />
     <Compile Include="SceneCadres\CE_Music.cs" />
     <Compile Include="SceneCadres\INFO_Scene.cs" />
-    <Compile Include="Controls\frmFrameChoice.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Controls\frmFrameChoice.Designer.cs">
-      <DependentUpon>frmFrameChoice.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\frmInputBox.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Controls\frmInputBox.Designer.cs">
-      <DependentUpon>frmInputBox.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\frmTextEdit.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Controls\frmTextEdit.Designer.cs">
-      <DependentUpon>frmTextEdit.cs</DependentUpon>
-    </Compile>
     <Compile Include="Scenario\SCENARIO.cs" />
     <Compile Include="SceneCadres\StoryScene.cs" />
     <Compile Include="Data\Games\SILKY%27S SAKURA-Otto no Inu Ma ni.cs" />
@@ -113,13 +82,6 @@
     <Compile Include="Frames\FrameSound.cs" />
     <Compile Include="Frames\FrameText.cs" />
     <Compile Include="ImageCadreViewModel.cs" />
-    <Compile Include="Controls\PicPropsEdit.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Controls\PicPropsEdit.Designer.cs">
-      <DependentUpon>PicPropsEdit.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Interfaces\IMenuCreator.cs" />
     <Compile Include="Scene\INFO_Clip.cs" />
     <Compile Include="PictureClasses.cs" />
     <Compile Include="CadreController.cs" />
@@ -185,18 +147,6 @@
     </COMReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Controls\frmFrameChoice.resx">
-      <DependentUpon>frmFrameChoice.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Controls\frmInputBox.resx">
-      <DependentUpon>frmInputBox.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Controls\frmTextEdit.resx">
-      <DependentUpon>frmTextEdit.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Controls\PicPropsEdit.resx">
-      <DependentUpon>PicPropsEdit.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
   </ItemGroup>
   <ItemGroup>
