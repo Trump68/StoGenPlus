@@ -1,6 +1,8 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using UnityEngine;
 using UnityStoGen;
 
@@ -11,34 +13,49 @@ public class StartApp : MonoBehaviour
     //GameObject fem1;
     void Start()
     {
+        //CenterMainCamera();
 
-        Texture2D img = LoadPNG(@"e:\!CATALOG\PRS\!STO GEN ART\Quuni\DATA\002.png");
-        //SpriteRenderer sr = GetComponent<SpriteRenderer>();
-        //sr.sprite = Sprite.Create(img, new Rect(0, 0, img.width, img.height), new Vector2(0, 0), 100);
-        GameObject fruit = new GameObject();
-        fruit.AddComponent<SpriteRenderer>();
-        fruit.GetComponent<SpriteRenderer>().sprite = Sprite.Create(img, new Rect(0, 0, img.width, img.height), new Vector2(0, 0), 100);
+        //Scenario scen = Scenario.LoadFrom(@"e:\!CATALOG\PRS\!STO GEN STORY\Story 001\Story 001.epcatsi");
+        //var sceneData = scen.GetGroupedList();
+        //var firstCadre = sceneData.First();
 
-        //StartCoroutine(LoadImg());
+        //foreach (var item in firstCadre)
+        //{
+        //    if (item.Kind == 9) // background
+        //    {
+        //        CreateBackground(item);
+        //    }
+        //}
+    
     }
 
-    IEnumerator LoadImg()
+    //private void CreateBackground(Info_Scene item)
+    //{
+    //    Texture2D img = LoadPNG(item.File);        
+    //    var background = GameObject.Find("Background");
+    //    background.GetComponent<SpriteRenderer>().sprite = Sprite.Create(img, new Rect(0, 0, img.width, img.height), new Vector2(0, 0), 100);
+    //    ResizeSpriteToScreen(background);
+    //}
+
+    private void ResizeSpriteToScreen(GameObject gameobject)
     {
-        yield return 0;
-        //img = LoadPNG(@"e:\!CATALOG\PRS\!STO GEN ART\Quuni\DATA\001.png");
-        //img = LoadPNG(UnityAPI.GetFileName());
-    }
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-    private void OnGUI()
-    {
-        //GUILayout.Label(img);
-        
+        var sr = gameobject.GetComponent<SpriteRenderer>();
+        if (sr == null) return;
+        var trans = gameobject.GetComponent<Transform>();        
+        var width = sr.sprite.bounds.size.x;
+        var height = sr.sprite.bounds.size.y;
+        float worldScreenHeight = Camera.main.orthographicSize * (float)2.0;
+        float worldScreenWidth = worldScreenHeight / Screen.height * Screen.width;
+        var vector = new Vector3(worldScreenWidth / width, worldScreenHeight / height, 1);
+        trans.localScale = vector;
     }
 
+    private void CenterMainCamera()
+    {
+        float worldScreenHeight = Camera.main.orthographicSize * (float)2.0;
+        float worldScreenWidth = worldScreenHeight / Screen.height * Screen.width;
+        Camera.main.transform.localPosition = new Vector3(worldScreenWidth / 2, worldScreenHeight / 2, -10);
+    }
     // ================== To load texture from file 
 
     public static Texture2D LoadPNG(string filePath)
@@ -55,6 +72,22 @@ public class StartApp : MonoBehaviour
         }
         return tex;
     }
+
+    //img = LoadPNG(@"e:\!CATALOG\PRS\!STO GEN ART\Quuni\DATA\001.png");
+    //img = LoadPNG(UnityAPI.GetFileName());
+
+    //private void OnGUI()
+    //{
+    //    //GUILayout.Label(img);
+
+    //}
+
+    //Texture2D img = LoadPNG(@"e:\!CATALOG\PRS\!STO GEN ART\Quuni\DATA\002.png");
+    //SpriteRenderer sr = GetComponent<SpriteRenderer>();
+    //GameObject fruit = new GameObject();
+    //fruit.AddComponent<SpriteRenderer>();
+    //fruit.GetComponent<SpriteRenderer>().sprite = Sprite.Create(img, new Rect(0, 0, img.width, img.height), new Vector2(0, 0), 100);
+    //StartCoroutine(LoadImg());
 
     // ================ to create sprite form texture
 
