@@ -15,6 +15,15 @@ public class AbPath
     {
 
         List<AbWorldTile> path = FindPathData(startWorldPosition, endWorldPosition);
+        return FindPath(path);
+    }
+    public static List<Vector3> FindPath(Vector3 startWorldPosition, Vector2Int endWorldPosition)
+    {
+        List<AbWorldTile> path = FindPathData(startWorldPosition, endWorldPosition);
+        return FindPath(path);
+    }
+    private static List<Vector3> FindPath(List<AbWorldTile> path)
+    {
         if (path != null)
         {
             List<Vector3> vectorPath = new List<Vector3>();
@@ -29,13 +38,20 @@ public class AbPath
         }
         return null;
     }
-
     private static List<AbWorldTile> FindPathData(Vector3 startWorldPosition, Vector3 endWorldPosition)
     {
-
         AbWorldTile startNode = AbGridTileStorage.GetTileData(startWorldPosition);//GetGridObject(startX, startY);
-        AbWorldTile endNode   = AbGridTileStorage.GetTileData(endWorldPosition);
-        
+        AbWorldTile endNode = AbGridTileStorage.GetTileData(endWorldPosition);
+        return FindPathData(startNode, endNode);
+    }
+    private static List<AbWorldTile> FindPathData(Vector3 startWorldPosition, Vector2Int endWorldPosition)
+    {
+        AbWorldTile startNode = AbGridTileStorage.GetTileData(startWorldPosition);//GetGridObject(startX, startY);
+        AbWorldTile endNode = AbGridTileStorage.GetTileData(endWorldPosition.x, endWorldPosition.y);
+        return FindPathData(startNode, endNode);
+    }
+    private static List<AbWorldTile> FindPathData( AbWorldTile startNode, AbWorldTile endNode)
+    {
 
         if (startNode == null || endNode == null)
         {

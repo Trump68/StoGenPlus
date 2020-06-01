@@ -7,7 +7,8 @@ using UnityEngine.Tilemaps;
 
 public class AbGridTileStorage : MonoBehaviour
 {
-    public Tilemap Tilemap;
+    public Tilemap TilemapWalls;
+    public Tilemap TilemapFloor;
     private static AbGridTileStorage instance;
     private Dictionary<Vector2Int, AbWorldTile> tiles;
     public static List<AbWorldTile> Tiles
@@ -19,16 +20,16 @@ public class AbGridTileStorage : MonoBehaviour
     }
     public static Vector3 GridPosition(Vector3 pos)
     {
-        return instance.Tilemap.WorldToCell(pos);
+        return instance.TilemapWalls.WorldToCell(pos);
     }
     public static Vector3 WorldPosition(AbWorldTile cell)
     {
-        return instance.Tilemap.CellToWorld(new Vector3Int(cell.x, cell.y, 0));
+        return instance.TilemapWalls.CellToWorld(new Vector3Int(cell.x, cell.y, 0));
     }
 
     public static AbWorldTile GetTileData(Vector3 pos)
     {
-        var gridPos = instance.Tilemap.WorldToCell(pos);
+        var gridPos = instance.TilemapWalls.WorldToCell(pos);
         return GetTileData(gridPos.x, gridPos.y);
     }
     public static AbWorldTile GetTileData(int x, int y)
@@ -42,11 +43,11 @@ public class AbGridTileStorage : MonoBehaviour
     }
     internal static int GetWidth()
     {
-        return instance.Tilemap.cellBounds.xMax;
+        return instance.TilemapWalls.cellBounds.xMax;
     }
     internal static int GetHeight()
     {
-        return instance.Tilemap.cellBounds.yMax;
+        return instance.TilemapWalls.cellBounds.yMax;
     }
     private void Awake()
     {
@@ -66,7 +67,7 @@ public class AbGridTileStorage : MonoBehaviour
     private void GetWorldTiles()
     {
         tiles = new Dictionary<Vector2Int, AbWorldTile>();
-        foreach (Vector3Int pos in Tilemap.cellBounds.allPositionsWithin)
+        foreach (Vector3Int pos in TilemapWalls.cellBounds.allPositionsWithin)
         {
             // var localPlace = new Vector3Int(pos.x, pos.y, pos.z);
 
@@ -74,9 +75,9 @@ public class AbGridTileStorage : MonoBehaviour
             var tile = new AbWorldTile
             {
                 LocalPlace = pos,
-                WorldLocation = Tilemap.CellToWorld(pos),
-                TileBase = Tilemap.GetTile(pos),
-                TilemapMember = Tilemap,
+                WorldLocation = TilemapWalls.CellToWorld(pos),
+                TileBase = TilemapWalls.GetTile(pos),
+                TilemapMember = TilemapWalls,
                 Name = pos.x + "," + pos.y,
                 Cost = 1, // TODO: Change this with the proper cost from ruletile
                 isWalkable = true,
@@ -85,12 +86,21 @@ public class AbGridTileStorage : MonoBehaviour
             };
             if (tile.TileBase != null)
             {
-                var collidetype = Tilemap.GetColliderType(tile.LocalPlace);
+                var collidetype = TilemapWalls.GetColliderType(tile.LocalPlace);
                 if (collidetype == Tile.ColliderType.Sprite)
                 {
                     tile.isWalkable = false;
                 }
                 
+            }
+            if (tile.isWalkable && TilemapFloor != null)
+            {
+                var collidetype = TilemapFloor.GetColliderType(tile.LocalPlace);
+                if (collidetype == Tile.ColliderType.Sprite)
+                {
+                    tile.isWalkable = false;
+                }
+
             }
             tiles.Add(new Vector2Int(pos.x, pos.y), tile);
         }

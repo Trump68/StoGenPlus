@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
-public class AbTilesEditor : MonoBehaviour
+public class LocationGameObject : MonoBehaviour
 {
     //private AbWorldTile _tile;
     void Start()
@@ -31,7 +31,7 @@ public class AbTilesEditor : MonoBehaviour
                 {
                     w = " -not walkable";
                 }
-                print($"Tile {_tile.Name} costs: {_tile.Cost}{w}");
+                print($"Tile x{_tile.x}:y{_tile.y}, costs: {_tile.Cost}{w}");
                
                 //if (_tile.TileBase != null)
                 //{

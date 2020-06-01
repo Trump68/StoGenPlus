@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class MariaBehaviour : MonoBehaviour
+public class BasicMoving : MonoBehaviour
 {
     [Header("Character attributes")]
     public float BASIC_SPEED = 1.5f;
@@ -20,6 +20,7 @@ public class MariaBehaviour : MonoBehaviour
     void Start()
     {
         pos = transform.position;          // Take the initial position
+        animator.SetInteger("Action", 1);
     }
 
     bool stop = false;
@@ -69,7 +70,7 @@ public class MariaBehaviour : MonoBehaviour
         pathVectorList = null;
         animator.SetInteger("Magnitude", 0);
     }
-    public void SetTargetPosition(Vector3 targetPosition)
+    public List<Vector3> SetTargetPosition(Vector3 targetPosition)
     {
         currentPathIndex = 0;
         pathVectorList = AbPath.FindPath(transform.position, targetPosition);
@@ -81,8 +82,22 @@ public class MariaBehaviour : MonoBehaviour
 
         pos = transform.position;
         SetMoveDirection();
+        return pathVectorList;
     }
+    public List<Vector3> SetTargetPosition(Vector2Int targetPosition)
+    {
+        currentPathIndex = 0;
+        pathVectorList = AbPath.FindPath(transform.position, targetPosition);
 
+        if (pathVectorList != null && pathVectorList.Count > 1)
+        {
+            pathVectorList.RemoveAt(0);
+        }
+
+        pos = transform.position;
+        SetMoveDirection();
+        return pathVectorList;
+    }
     private void SetMoveDirection()
     {
         if (pathVectorList == null) return;
